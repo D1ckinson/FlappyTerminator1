@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: -3980904084234153326}
   - component: {fileID: -7974779550360842245}
   - component: {fileID: -2634971442365090450}
-  - component: {fileID: 7954341311547978350}
   - component: {fileID: -69381325105207932}
   m_Layer: 0
   m_Name: Alien
@@ -96,8 +95,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586842047383983317}
-  m_BodyType: 0
-  m_Simulated: 0
+  m_BodyType: 1
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -121,7 +120,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,28 +282,6 @@ PolygonCollider2D:
       - {x: -0.38085938, y: -0.49414062}
       - {x: -0.3671875, y: -0.48046875}
       - {x: -0.35742188, y: -0.4609375}
---- !u!66 &7954341311547978350
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586842047383983317}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths: []
-  m_CompositePaths:
-    m_Paths: []
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
 --- !u!114 &-69381325105207932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,3 +296,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: -3885953188420169020, guid: ba93715dcacc2c14a9b4b2403da3fa99, type: 3}
   _fireRate: 5
+  _moveSpeed: 0.07

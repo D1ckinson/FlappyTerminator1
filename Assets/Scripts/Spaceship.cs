@@ -1,13 +1,17 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Spaceship : MonoBehaviour, IDamageable
+[RequireComponent(typeof(Mover))]
+public class Spaceship : MonoBehaviour
 {
-    [SerializeField] private float _health = 100;
+    [SerializeField] private Bullet _bullet;
+    [SerializeField] private FireButton _fireButton;
 
     private float _yMinusDeadZone;
     private Rigidbody2D _rigidbody;
     private float _velocityMultiplier = 3.5f;
+    private float _halfSize;
+    private float _divider = 2;
 
     private void Start()
     {
@@ -19,14 +23,14 @@ public class Spaceship : MonoBehaviour, IDamageable
         Vector3 leftBot = Camera.main.ViewportToWorldPoint(new(0, 0, distance));
 
         _yMinusDeadZone = leftBot.y;
+
+        _halfSize = GetComponent<SpriteRenderer>().bounds.size.x / _divider;
     }
 
     private void Update()
     {
         if (transform.position.y < _yMinusDeadZone)
-        {
-            Debug.Log("работает");
-        }
+            Die();
     }
 
     private void FixedUpdate()
@@ -37,18 +41,29 @@ public class Spaceship : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageSource source = collision.GetComponentInChildren<IDamageSource>();
-        Debug.Log("Бум");
-        if (source == null)
+        Bullet bullet = collision.GetComponentInChildren<Bullet>();
+
+        if (bullet == null)
             return;
 
-        TakeDamage(source.Damage);
-        Destroy(collision.gameObject);
-        Debug.Log(_health);
+        Die();
     }
 
-    public void TakeDamage(float damage)
+    private void OnEnable() =>
+        _fireButton.Fire += Fire;
+
+    private void OnDisable() =>
+        _fireButton.Fire -= Fire;
+
+    private void Fire()
     {
-        _health -= damage;
+        Vector3 firePoint = new(_halfSize + 1, 0, 0);
+        firePoint += transform.position;
+
+        Bullet bullet = Instantiate(_bullet, firePoint, Quaternion.identity);
+        bullet.SetDirection(Vector3.right);
     }
+
+    private void Die() =>
+        Destroy(gameObject);
 }

@@ -3,32 +3,31 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Alien : MonoBehaviour, IDamageable
+public class Alien : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
     [SerializeField] private float _fireRate = 5f;
-    [SerializeField] private float _health = 100;
     [SerializeField] private float _moveSpeed = 0.07f;
 
     private Vector2 _targetPoint;
     private Coroutine _coroutine;
+    private Action _disable;
+    private float _halfSize;
+    private float _divider = 2;
 
-    //private void OnEnable() =>
-    //    _coroutine = StartCoroutine(Fire());
+    private void Start() =>
+        _halfSize = GetComponent<SpriteRenderer>().bounds.size.x / _divider;
 
     private void Update()
     {
         if (transform.position == _targetPoint.ConvertTo<Vector3>() && _coroutine == null)
-        {
             _coroutine = StartCoroutine(Fire());
-        }
     }
 
     private void OnDisable()
     {
         if (_coroutine != null)
             _coroutine = null;
-        //StopCoroutine(_coroutine);
     }
 
     private void FixedUpdate() =>
@@ -36,20 +35,16 @@ public class Alien : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageSource source = collision.GetComponentInChildren<IDamageSource>();
-        Debug.Log("Бум");
-        if (source == null)
+        Bullet bullet = collision.GetComponentInChildren<Bullet>();
+
+        if (bullet == null)
             return;
 
-        TakeDamage(source.Damage);
-        Destroy(collision.gameObject);
-        Debug.Log(_health);
+        _disable?.Invoke();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Бум");
-    }
+    public void SetDisableAction(Action disable) =>
+        _disable = disable;
 
     public void SetTargetPoint(Vector2 targetPoint) =>
         _targetPoint = targetPoint;
@@ -60,15 +55,13 @@ public class Alien : MonoBehaviour, IDamageable
 
         while (true)
         {
-            Bullet bullet = Instantiate(_bullet, transform.position, Quaternion.identity);
+            Vector3 firePoint = new(-_halfSize - 1, 0, 0);
+            firePoint += transform.position;
+
+            Bullet bullet = Instantiate(_bullet, firePoint, Quaternion.identity);
             bullet.SetDirection(Vector3.left);
 
             yield return wait;
         }
-    }
-
-    public void TakeDamage(float damage)
-    {
-        _health -= damage;
     }
 }

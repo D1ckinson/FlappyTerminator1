@@ -6,9 +6,7 @@ public class AlienSpawner : MonoBehaviour
     [SerializeField] private float _spawnTime = 5f;
     [SerializeField] private int _alienCount = 5;
     [SerializeField] private Alien _alien;
-    [SerializeField] private Bullet _bullet;
 
-    private Pool<Bullet> _bulletPool;
     private Pool<Alien> _alienPool;
     private Vector2 _spawnPoint1;
     private Vector2 _spawnPoint2;
@@ -17,12 +15,10 @@ public class AlienSpawner : MonoBehaviour
     private float _ySpawnOffset = -2f;
     private float _xTargetPointOffset = 1f;
     private float _yTargetPointOffset = 1f;
-    private int _bulletCount = 10;
 
     void Start()
     {
         _alienPool = new(PreloadAlienFunc, GetAlienAction, ReturnAlienAction, _alienCount);
-        _bulletPool = new(PreloadBulletFunc, GetBulletAction, ReturnBulletAction, _bulletCount);
 
         Vector3 cameraToObject = transform.position - Camera.main.transform.position;
         float distance = Vector3.Project(cameraToObject, Camera.main.transform.forward).z;
@@ -67,31 +63,21 @@ public class AlienSpawner : MonoBehaviour
         return new Vector2(x, y);
     }
 
-    private Alien PreloadAlienFunc() =>
-        Instantiate(_alien);
+    private Alien PreloadAlienFunc()
+    {
+        Alien alien = Instantiate(_alien);
+        alien.SetDisableAction(() => _alienPool.Return(alien));
 
-    private Bullet PreloadBulletFunc() =>
-        Instantiate(_bullet);
+        return alien;
+    }
 
     private void GetAlienAction(Alien alien)
     {
-        //alien.SetBulletPool(_bulletPool);
         alien.transform.position = GetSpawnPoint();
         alien.SetTargetPoint(GetTargetPoint());
         alien.gameObject.SetActive(true);
     }
 
-    private void GetBulletAction(Bullet bullet)
-    {
-        bullet.gameObject.SetActive(true);
-        //
-    }
-
     private void ReturnAlienAction(Alien alien) =>
         alien.gameObject.SetActive(false);
-
-    private void ReturnBulletAction(Bullet bullet)
-    {
-        bullet.gameObject.SetActive(false);
-    }
 }

@@ -1,17 +1,13 @@
 ﻿using UnityEngine;
 
-public class Bullet : MonoBehaviour, IDamageSource
+public class Bullet : MonoBehaviour
 {
     private Vector3 _direction;
     private float _speed = 0.2f;
     private float _rotateDegrees = 90f;
 
-    [field: SerializeField] public float Damage { get; private set; }
-
-    private void Update()
-    {
-
-    }
+    private void OnBecameInvisible() => 
+        Destroy(gameObject);
 
     private void FixedUpdate() =>
         transform.position += _direction * _speed;
