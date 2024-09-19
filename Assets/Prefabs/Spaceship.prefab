@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 3025295472082475721}
   - component: {fileID: 3025295472082475763}
   - component: {fileID: 3025295472082475723}
+  - component: {fileID: 7144447520743992087}
   - component: {fileID: 3025295472082475720}
+  - component: {fileID: 999666527288155368}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -223,7 +225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ca68d9c09367948b407de8c8e0cc84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: -3885953188420169020, guid: ba93715dcacc2c14a9b4b2403da3fa99, type: 3}
+  _fireButton: {fileID: 0}
+  _damageHandler: {fileID: 3025295472082475720}
+  _weapon: {fileID: 999666527288155368}
 --- !u!114 &3025295472082475723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +241,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpButton: 32
+--- !u!114 &7144447520743992087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025295472082475760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad37c34f8bb5f04284f7b3c29cbfb1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpForce: 10
+  IsJump: 0
 --- !u!114 &3025295472082475720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,8 +264,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3025295472082475760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63dc21cb898b0fe4a9135e855448b032, type: 3}
+  m_Script: {fileID: 11500000, guid: 691caf909e93d8648aec8998667620ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 6
-  IsJump: 0
+--- !u!114 &999666527288155368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025295472082475760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0e7520a35c99c4386b79ba4aba1b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bullet: {fileID: -3885953188420169020, guid: ba93715dcacc2c14a9b4b2403da3fa99, type: 3}

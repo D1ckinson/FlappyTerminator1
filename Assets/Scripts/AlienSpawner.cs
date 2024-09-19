@@ -16,7 +16,7 @@ public class AlienSpawner : MonoBehaviour
     private float _xTargetPointOffset = 1f;
     private float _yTargetPointOffset = 1f;
 
-    void Start()
+    private void Start()
     {
         _alienPool = new(PreloadAlienFunc, GetAlienAction, ReturnAlienAction, _alienCount);
 

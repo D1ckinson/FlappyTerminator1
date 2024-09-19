@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Mover : MonoBehaviour
+public class Jump : MonoBehaviour
 {
     [SerializeField] private float _jumpForce = 10f;
 
@@ -17,12 +17,12 @@ public class Mover : MonoBehaviour
     {
         if (IsJump)
         {
-            Jump();
+            Hop();
             Jumping?.Invoke();
             IsJump = false;
         }
     }
 
-    private void Jump() => 
+    private void Hop() => 
         _rigidbody.velocity = new(_rigidbody.velocity.x, _jumpForce);
 }

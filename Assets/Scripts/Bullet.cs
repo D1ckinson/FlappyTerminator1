@@ -6,10 +6,10 @@ public class Bullet : MonoBehaviour
     private float _speed = 0.2f;
     private float _rotateDegrees = 90f;
 
-    private void OnBecameInvisible() => 
+    private void OnBecameInvisible() =>
         Destroy(gameObject);
 
-    private void FixedUpdate() =>
+    private void Update() =>
         transform.position += _direction * _speed;
 
     public void SetDirection(Vector3 direction)

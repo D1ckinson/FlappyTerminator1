@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: -7974779550360842245}
   - component: {fileID: -2634971442365090450}
   - component: {fileID: -69381325105207932}
+  - component: {fileID: 7437444555268633784}
+  - component: {fileID: 4606967149555660884}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Untagged
@@ -294,6 +296,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9073a03e98c86d24da57451ec4ffc8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: -3885953188420169020, guid: ba93715dcacc2c14a9b4b2403da3fa99, type: 3}
   _fireRate: 5
   _moveSpeed: 0.07
+  _damageHandler: {fileID: 4606967149555660884}
+  _weapon: {fileID: 7437444555268633784}
+--- !u!114 &7437444555268633784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586842047383983317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0e7520a35c99c4386b79ba4aba1b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bullet: {fileID: -3885953188420169020, guid: ba93715dcacc2c14a9b4b2403da3fa99, type: 3}
+--- !u!114 &4606967149555660884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586842047383983317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691caf909e93d8648aec8998667620ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

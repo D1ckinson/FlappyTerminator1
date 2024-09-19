@@ -1,14 +1,14 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Mover))]
+[RequireComponent(typeof(Jump))]
 public class InputReader : MonoBehaviour
 {
     [SerializeField] private KeyCode _jumpButton = KeyCode.Space;
 
-    private Mover _mover;
+    private Jump _mover;
 
     void Start() => 
-        _mover = GetComponent<Mover>();
+        _mover = GetComponent<Jump>();
 
     void Update()
     {
