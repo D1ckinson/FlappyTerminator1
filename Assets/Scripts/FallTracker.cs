@@ -6,7 +6,7 @@ public class FallTracker : MonoBehaviour
 
     private float _yMinusDeadZone;
 
-    private void Start()
+    private void Awake()
     {
         Vector3 cameraToObject = _spaceship.transform.position - Camera.main.transform.position;
         float distance = Vector3.Project(cameraToObject, Camera.main.transform.forward).z;

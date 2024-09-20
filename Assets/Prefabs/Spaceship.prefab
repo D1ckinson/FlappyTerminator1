@@ -253,8 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad37c34f8bb5f04284f7b3c29cbfb1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 10
-  IsJump: 0
+  _force: 10
+  IsHop: 0
 --- !u!114 &3025295472082475720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,4 +279,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0e7520a35c99c4386b79ba4aba1b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: -3885953188420169020, guid: ba93715dcacc2c14a9b4b2403da3fa99, type: 3}
+  _bulletPrefab: {fileID: -3885953188420169020, guid: ba93715dcacc2c14a9b4b2403da3fa99, type: 3}

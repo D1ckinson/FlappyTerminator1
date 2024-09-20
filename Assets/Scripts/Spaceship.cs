@@ -11,7 +11,7 @@ public class Spaceship : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private float _velocityMultiplier = 3.5f;
 
-    private void Start()
+    private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _damageHandler.SetAction(() => Destroy(gameObject));

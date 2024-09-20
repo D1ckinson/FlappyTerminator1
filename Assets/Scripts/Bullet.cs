@@ -1,16 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     private Vector3 _direction;
-    private float _speed = 0.2f;
+    private float _speed = 13f;
     private float _rotateDegrees = 90f;
-
-    private void OnBecameInvisible() =>
-        Destroy(gameObject);
+    private Action _action;
 
     private void Update() =>
-        transform.position += _direction * _speed;
+        transform.position += _speed * Time.deltaTime * _direction;
+
+    private void OnBecameInvisible() =>
+        _action?.Invoke();
+
+    public void SetDisableAction(Action action) =>
+        _action = action;
 
     public void SetDirection(Vector3 direction)
     {

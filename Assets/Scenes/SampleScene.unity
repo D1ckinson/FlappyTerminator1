@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnTime: 5
   _alienCount: 5
-  _alien: {fileID: -69381325105207932, guid: daf5568d0b3a88141aac3c807cc2fd02, type: 3}
+  _alienPrefab: {fileID: -69381325105207932, guid: daf5568d0b3a88141aac3c807cc2fd02, type: 3}
 --- !u!1 &170158254
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,11 +254,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &343633696 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3025295472082475760, guid: 32c0bf6e0d6c32c4d95cbe7ad3ad19a6, type: 3}
-  m_PrefabInstance: {fileID: 3025295473895592745}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4875a083d9c5e448184c5af7318d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spaceship: {fileID: 3025295473895592746}
+  _spaceship: {fileID: 892568850}
 --- !u!1 &684711136
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,6 +491,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684711136}
   m_CullTransparentMesh: 1
+--- !u!114 &892568850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3025295472082475763, guid: 32c0bf6e0d6c32c4d95cbe7ad3ad19a6, type: 3}
+  m_PrefabInstance: {fileID: 2056920818}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ca68d9c09367948b407de8c8e0cc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &899553599
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +807,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040072338}
   m_CullTransparentMesh: 1
---- !u!1001 &3025295473895592745
+--- !u!1001 &2056920818
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -813,10 +819,6 @@ PrefabInstance:
       value: Spaceship
       objectReference: {fileID: 0}
     - target: {fileID: 3025295472082475763, guid: 32c0bf6e0d6c32c4d95cbe7ad3ad19a6, type: 3}
-      propertyPath: _weapon
-      value: 
-      objectReference: {fileID: 3025295473895592747}
-    - target: {fileID: 3025295472082475763, guid: 32c0bf6e0d6c32c4d95cbe7ad3ad19a6, type: 3}
       propertyPath: _fireButton
       value: 
       objectReference: {fileID: 684711138}
@@ -826,11 +828,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3025295472082475765, guid: 32c0bf6e0d6c32c4d95cbe7ad3ad19a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: -7.559678
       objectReference: {fileID: 0}
     - target: {fileID: 3025295472082475765, guid: 32c0bf6e0d6c32c4d95cbe7ad3ad19a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.07361603
       objectReference: {fileID: 0}
     - target: {fileID: 3025295472082475765, guid: 32c0bf6e0d6c32c4d95cbe7ad3ad19a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -864,30 +866,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3025295472082475722, guid: 32c0bf6e0d6c32c4d95cbe7ad3ad19a6, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32c0bf6e0d6c32c4d95cbe7ad3ad19a6, type: 3}
---- !u!114 &3025295473895592746 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3025295472082475763, guid: 32c0bf6e0d6c32c4d95cbe7ad3ad19a6, type: 3}
-  m_PrefabInstance: {fileID: 3025295473895592745}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343633696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ca68d9c09367948b407de8c8e0cc84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3025295473895592747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343633696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef0e7520a35c99c4386b79ba4aba1b51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bullet: {fileID: -3885953188420169020, guid: ba93715dcacc2c14a9b4b2403da3fa99, type: 3}

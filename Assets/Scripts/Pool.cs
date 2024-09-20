@@ -8,7 +8,6 @@ public class Pool<T>
     private Action<T> _returnAction;
 
     private Queue<T> _pool = new();
-    private List<T> _active = new();
 
     public Pool(Func<T> preloadFunc, Action<T> getAction, Action<T> returnAction, int preloadCount)
     {
@@ -29,8 +28,6 @@ public class Pool<T>
         T item = _pool.Count > 0 ? _pool.Dequeue() : _preloadFunc();
 
         _getAction(item);
-        _active.Add(item);
-
         CurrentSpawns++;
 
         return item;
@@ -39,10 +36,7 @@ public class Pool<T>
     public void Return(T item)
     {
         _returnAction(item);
-
         _pool.Enqueue(item);
-        _active.Remove(item);
-
         CurrentSpawns--;
     }
 }

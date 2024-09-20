@@ -5,7 +5,7 @@ public class AlienSpawner : MonoBehaviour
 {
     [SerializeField] private float _spawnTime = 5f;
     [SerializeField] private int _alienCount = 5;
-    [SerializeField] private Alien _alien;
+    [SerializeField] private Alien _alienPrefab;
 
     private Pool<Alien> _alienPool;
     private Vector2 _spawnPoint1;
@@ -16,23 +16,25 @@ public class AlienSpawner : MonoBehaviour
     private float _xTargetPointOffset = 1f;
     private float _yTargetPointOffset = 1f;
 
-    private void Start()
+    private void Awake()
     {
         _alienPool = new(PreloadAlienFunc, GetAlienAction, ReturnAlienAction, _alienCount);
+        Camera camera = Camera.main;
 
-        Vector3 cameraToObject = transform.position - Camera.main.transform.position;
-        float distance = Vector3.Project(cameraToObject, Camera.main.transform.forward).z;
+        Vector3 cameraToObject = transform.position - camera.transform.position;
+        float distance = Vector3.Project(cameraToObject, camera.transform.forward).z;
 
-        Vector3 rightBot = Camera.main.ViewportToWorldPoint(new(1, 0, distance));
-        Vector3 rightTop = Camera.main.ViewportToWorldPoint(new(1, 1, distance));
+        Vector3 rightBot = camera.ViewportToWorldPoint(new(1, 0, distance));
+        Vector3 rightTop = camera.ViewportToWorldPoint(new(1, 1, distance));
 
         _spawnPoint1 = new(rightTop.x, rightTop.y - _ySpawnOffset);
         _spawnPoint2 = new(rightBot.x, rightBot.y - _ySpawnOffset);
         _targetPoint1 = new(rightTop.x - _xTargetPointOffset, rightTop.y - _yTargetPointOffset);
         _targetPoint2 = new(rightBot.x - _xTargetPointOffset, rightBot.y + _yTargetPointOffset);
-
-        StartCoroutine(Spawn());
     }
+
+    private void Start() =>
+        StartCoroutine(Spawn());
 
     private IEnumerator Spawn()
     {
@@ -65,7 +67,7 @@ public class AlienSpawner : MonoBehaviour
 
     private Alien PreloadAlienFunc()
     {
-        Alien alien = Instantiate(_alien);
+        Alien alien = Instantiate(_alienPrefab);
         alien.SetDisableAction(() => _alienPool.Return(alien));
 
         return alien;

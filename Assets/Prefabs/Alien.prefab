@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fireRate: 5
-  _moveSpeed: 0.07
+  _moveSpeed: 3.6
   _damageHandler: {fileID: 4606967149555660884}
   _weapon: {fileID: 7437444555268633784}
 --- !u!114 &7437444555268633784
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0e7520a35c99c4386b79ba4aba1b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: -3885953188420169020, guid: ba93715dcacc2c14a9b4b2403da3fa99, type: 3}
+  _bulletPrefab: {fileID: -3885953188420169020, guid: ba93715dcacc2c14a9b4b2403da3fa99, type: 3}
 --- !u!114 &4606967149555660884
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,14 +5,14 @@ public class InputReader : MonoBehaviour
 {
     [SerializeField] private KeyCode _jumpButton = KeyCode.Space;
 
-    private Jump _mover;
+    private Jump _jump;
 
-    void Start() => 
-        _mover = GetComponent<Jump>();
+    private void Awake() => 
+        _jump = GetComponent<Jump>();
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(_jumpButton))
-            _mover.IsJump = true;
+            _jump.IsHop = true;
     }
 }

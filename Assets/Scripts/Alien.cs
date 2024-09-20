@@ -6,7 +6,7 @@ using UnityEngine;
 public class Alien : MonoBehaviour
 {
     [SerializeField] private float _fireRate = 5f;
-    [SerializeField] private float _moveSpeed = 0.07f;
+    [SerializeField] private float _moveSpeed = 1f;
     [SerializeField] private DamageHandler _damageHandler;
     [SerializeField] private Weapon _weapon;
 

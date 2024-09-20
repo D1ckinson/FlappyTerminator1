@@ -4,25 +4,26 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Jump : MonoBehaviour
 {
-    [SerializeField] private float _jumpForce = 10f;
+    [SerializeField] private float _force = 10f;
 
-    public bool IsJump = false;
-    public event UnityAction Jumping;
+    public bool IsHop = false;
     private Rigidbody2D _rigidbody;
 
-    private void Start() => 
+    public event UnityAction Hoping;
+
+    private void Awake() => 
         _rigidbody = GetComponent<Rigidbody2D>();
 
     private void FixedUpdate()
     {
-        if (IsJump)
+        if (IsHop)
         {
             Hop();
-            Jumping?.Invoke();
-            IsJump = false;
+            Hoping?.Invoke();
+            IsHop = false;
         }
     }
 
     private void Hop() => 
-        _rigidbody.velocity = new(_rigidbody.velocity.x, _jumpForce);
+        _rigidbody.velocity = new(_rigidbody.velocity.x, _force);
 }
